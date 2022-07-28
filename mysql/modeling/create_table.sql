@@ -1,5 +1,7 @@
+use kthdb1;
+
 CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_product` (
-  `seq` INT NOT NULL AUTO_INCREMENT AUTO_INCREMENT,
+  `seq` INT NOT NULL AUTO_INCREMENT,
   `over_sea_ny` TINYINT NULL,
   `title` VARCHAR(45) NULL,
   `price` INT NULL,
@@ -9,9 +11,6 @@ CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_product` (
   `discount` INT NULL COMMENT '0~100%',
   `overseas_ny` TINYINT NULL COMMENT '국내:0/ 해외:1',
   `stock` INT NULL,
-  `brand_name` VARCHAR(45) NULL,
-  `brand_logo` VARCHAR(45) NULL,
-  `brand_tell` VARCHAR(45) NULL,
   PRIMARY KEY (`seq`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
@@ -57,10 +56,12 @@ CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_member` (
 ENGINE = InnoDB
 ;
 CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_like` (
+  `seq` INT NOT NULL AUTO_INCREMENT,
   `tb_member_seq` INT NOT NULL,
   `tb_product_seq` INT NOT NULL,
   INDEX `fk_tb_like_tb_member1_idx` (`tb_member_seq` ASC) VISIBLE,
   INDEX `fk_tb_like_tb_product1_idx` (`tb_product_seq` ASC) VISIBLE,
+  PRIMARY KEY (`seq`),
   CONSTRAINT `fk_tb_like_tb_member1`
     FOREIGN KEY (`tb_member_seq`)
     REFERENCES `kthdb1`.`tb_member` (`seq`)
@@ -185,11 +186,10 @@ CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_option_sellect` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 ;
-
-CREATE TABLE IF NOT EXISTS `kthdb1`.`tell` (
+CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_tell` (
   `seq` INT NOT NULL AUTO_INCREMENT,
   `tell_num` VARCHAR(45) NULL,
-  `tell_type` VARCHAR(45) NULL,
+  `tell_type` TINYINT NULL COMMENT '대표번호0 / 휴대폰번호1 / 집전화번호2 / 팩스번호3',
   `tb_member_seq` INT NOT NULL,
   PRIMARY KEY (`seq`),
   INDEX `fk_tell_tb_member1_idx` (`tb_member_seq` ASC) VISIBLE,
@@ -210,6 +210,33 @@ CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_addess` (
   CONSTRAINT `fk_tb_addess_tb_member1`
     FOREIGN KEY (`tb_member_seq`)
     REFERENCES `kthdb1`.`tb_member` (`seq`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+;
+CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_brand` (
+  `seq` INT NOT NULL AUTO_INCREMENT,
+  `brand_name` VARCHAR(45) NULL,
+  `logo` VARCHAR(45) NULL,
+  `acount` VARCHAR(45) NULL,
+  PRIMARY KEY (`seq`))
+ENGINE = InnoDB
+;
+CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_brand_product` (
+  `seq` INT NOT NULL AUTO_INCREMENT,
+  `tb_product_seq` INT NOT NULL,
+  `tb_brand_seq` INT NOT NULL,
+  PRIMARY KEY (`seq`),
+  INDEX `fk_tb_brand_product_tb_product1_idx` (`tb_product_seq` ASC) VISIBLE,
+  INDEX `fk_tb_brand_product_tb_brand1_idx` (`tb_brand_seq` ASC) VISIBLE,
+  CONSTRAINT `fk_tb_brand_product_tb_product1`
+    FOREIGN KEY (`tb_product_seq`)
+    REFERENCES `kthdb1`.`tb_product` (`seq`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tb_brand_product_tb_brand1`
+    FOREIGN KEY (`tb_brand_seq`)
+    REFERENCES `kthdb1`.`tb_brand` (`seq`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB

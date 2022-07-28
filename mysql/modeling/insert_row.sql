@@ -6,8 +6,8 @@ INSERT INTO tb_product(
     ,delivery_fee
 )
 VALUES(
-	"범블비3"
+	"범블비 무선RC 변신로봇"
     ,34000
-    ,5003
+    ,5000
 )
 ;
