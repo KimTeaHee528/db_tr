@@ -10,23 +10,50 @@ DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci
 ;
 
--- 칼럼추가
+
+-- 컬럼추가
 alter table member2 add column nickname varchar(45);
 alter table member2 add column name_eng varchar(45) after nickname;
 alter table member2 add column name_jp varchar(45) after nickname;
 alter table member2 add column name_ch varchar(45) after nickname;
-alter table member2 add column name_kor varchar(45) after nickname;
+alter table member2 add column name_ch varchar(45) after nickname;
 
--- 칼럼삭제
+
+INSERT INTO tb_tell(
+nickname
+,name_eng
+,name_jp
+,name_ch
+,name_ch
+)
+VALUES(
+"nickname"
+,"name_eng"
+,"name_jp"
+,"name_ch"
+,"name_ch"
+)
+;
+
+
+
+-- 컬럼삭제
 ALTER TABLE `member2` DROP `name_kor`;
 
--- 칼럼변경
+-- 컬럼변경
 alter table member2 modify column nickname int;
 
--- 칼럽 이름 변경
-alter table member2 change column nickname nick varchar(45);
+-- 컬럼 이름 변경
+ALTER TABLE member2 CHANGE COLUMN nickname nick varchar(45);
 
--- 시퀀스 순서
+-- 컬럼 삭제
+ALTER TABLE member2 DROP COLUMN nick;
+
+-- 로우 삭제
+DELETE FROM member2 WHERE SEQ =2;
+
+
+-- 시퀀스 시작순서
 -- ALTER TABLE tb_member AUTO_INCREMENT = 1;
 -- ALTER TABLE tb_tell AUTO_INCREMENT = 1;
 
