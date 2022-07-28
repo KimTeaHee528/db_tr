@@ -2,6 +2,7 @@ use kthdb1;
 
 drop table tb_brand_product;
 drop table tb_brand;
+drop table tb_email;
 drop table tb_addess;
 drop table tb_tell;
 drop table tb_option_sellect;

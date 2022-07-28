@@ -48,9 +48,7 @@ CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_member` (
   `name` VARCHAR(45) NULL,
   `grade` TINYINT NULL,
   `address` VARCHAR(45) NULL,
-  `email` VARCHAR(45) NULL,
   `gender` TINYINT NULL,
-  `age` INT NULL,
   `dob` DATE NULL,
   PRIMARY KEY (`seq`))
 ENGINE = InnoDB
@@ -214,11 +212,26 @@ CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_addess` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 ;
+CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_email` (
+  `seq` INT NOT NULL AUTO_INCREMENT,
+  `email` VARCHAR(45) NULL,
+  `advertise_ny` TINYINT NULL,
+  `tb_member_seq` INT NOT NULL,
+  PRIMARY KEY (`seq`),
+  INDEX `fk_tb_email_tb_member1_idx` (`tb_member_seq` ASC) VISIBLE,
+  CONSTRAINT `fk_tb_email_tb_member1`
+    FOREIGN KEY (`tb_member_seq`)
+    REFERENCES `kthdb1`.`tb_member` (`seq`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+;
 CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_brand` (
   `seq` INT NOT NULL AUTO_INCREMENT,
   `brand_name` VARCHAR(45) NULL,
   `logo` VARCHAR(45) NULL,
   `acount` VARCHAR(45) NULL,
+  `tb_brandcol` VARCHAR(45) NULL,
   PRIMARY KEY (`seq`))
 ENGINE = InnoDB
 ;
@@ -240,4 +253,3 @@ CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_brand_product` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-;
