@@ -1,4 +1,0 @@
-use kthdb1;
-
-ALTER TABLE tb_member AUTO_INCREMENT = 1;
-ALTER TABLE tb_tell AUTO_INCREMENT = 1;

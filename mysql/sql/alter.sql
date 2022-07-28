@@ -1,6 +1,6 @@
 use kthdb1;
 
-select * From member2;
+
 
 CREATE TABLE IF NOT EXISTS `kthdb1`.`member2` (
   `seq` INT NOT NULL AUTO_INCREMENT,
@@ -19,3 +19,16 @@ alter table member2 add column name_kor varchar(45) after nickname;
 
 -- 칼럼삭제
 ALTER TABLE `member2` DROP `name_kor`;
+
+-- 칼럼변경
+alter table member2 modify column nickname int;
+
+-- 칼럽 이름 변경
+alter table member2 change column nickname nick varchar(45);
+
+-- 시퀀스 순서
+-- ALTER TABLE tb_member AUTO_INCREMENT = 1;
+-- ALTER TABLE tb_tell AUTO_INCREMENT = 1;
+
+
+select * From member2;
