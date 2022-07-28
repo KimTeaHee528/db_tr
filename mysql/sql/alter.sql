@@ -19,26 +19,26 @@ alter table member2 add column name_ch varchar(45) after nickname;
 alter table member2 add column name_ch varchar(45) after nickname;
 
 
-INSERT INTO tb_tell(
-nickname
-,name_eng
-,name_jp
-,name_ch
-,name_ch
-)
-VALUES(
-"nickname"
-,"name_eng"
-,"name_jp"
-,"name_ch"
-,"name_ch"
-)
-;
+-- INSERT INTO tb_tell(
+-- nickname
+-- ,name_eng
+-- ,name_jp
+-- ,name_ch
+-- ,name_ch
+-- )
+-- VALUES(
+-- "nickname"
+-- ,"name_eng"
+-- ,"name_jp"
+-- ,"name_ch"
+-- ,"name_ch"
+-- )
+-- ;
 
 
 
 -- 컬럼삭제
-ALTER TABLE `member2` DROP `name_kor`;
+ALTER TABLE member2 DROP name_kor;
 
 -- 컬럼변경
 alter table member2 modify column nickname int;
@@ -50,7 +50,7 @@ ALTER TABLE member2 CHANGE COLUMN nickname nick varchar(45);
 ALTER TABLE member2 DROP COLUMN nick;
 
 -- 로우 삭제
-DELETE FROM member2 WHERE SEQ =2;
+DELETE FROM member2 WHERE SEQ > 0;
 
 
 -- 시퀀스 시작순서
