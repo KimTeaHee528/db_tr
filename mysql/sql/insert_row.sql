@@ -135,3 +135,256 @@ VALUES(
     ,3
 )
 ;
+
+INSERT INTO member2(
+	id
+    ,pw
+    ,name
+    ,grade
+    ,address
+    ,gender
+    ,dob
+)
+VALUES(
+	'spm528'
+    ,"4dsd64"
+    ,"김태희"
+    ,2
+    ,"안산"
+    ,1
+    ,"2004-05-28"
+),(
+	'hntsbo8'
+    ,"t9ldagsd"
+    ,"김바보"
+    ,4
+    ,"안산"
+    ,1
+    ,"1985-05-28"
+),(
+	'hnhe8'
+    ,"564agsd"
+    ,"김천재"
+    ,2
+    ,"일산"
+    ,3
+    ,"1989-05-28"
+),(
+	'iksbo8'
+    ,"75ieagsd"
+    ,"김평범"
+    ,2
+    ,"제주"
+    ,2
+    ,"1991-05-28"
+),(
+	'rxgmd42'
+    ,"t4bh6agsd"
+    ,"김비범"
+    ,1
+    ,"제주"
+    ,2
+    ,"2000-05-28"
+),(
+	'rqa58'
+    ,"nt4badagsd"
+    ,"김태이"
+    ,1
+    ,"광주"
+    ,4
+    ,"2002-05-28"
+),(
+	'jnryd5bo8'
+    ,"n5yedagsd"
+    ,"이태희"
+    ,1
+    ,"김해"
+    ,2
+    ,"2000-05-28"
+),(
+	'bsfsbo8'
+    ,"wt3abgsd"
+    ,"이제주"
+    ,1
+    ,"제주"
+    ,1
+    ,"1991-05-28"
+),(
+	'gbve6564'
+    ,"eah43sd"
+    ,"박태희"
+    ,1
+    ,"광주"
+    ,1
+    ,"1994-05-28"
+),(
+	'wrg1ab698'
+    ,"thfdagsd"
+    ,"최태희"
+    ,3
+    ,"강남"
+    ,2
+    ,"2014-05-28"
+)
+;
+
+INSERT INTO tb_address(
+	address
+    ,address_type
+    ,tb_member_seq
+)
+VALUES(
+	'vsdbkl2@sdnolvf.com'
+    ,1
+    ,1
+),(
+	'fd2@stshed.com'
+    ,0
+    ,2
+),(
+	'eragb@zbeahed.com'
+    ,0
+    ,3
+),(
+	'23q4gdd2@rgeed.com'
+    ,0
+    ,4
+),(
+	'gbshf243@gfdd.com'
+    ,1
+    ,5
+),(
+	'534bfdz2@ngbsdhed.com'
+    ,0
+    ,6
+),(
+	'5shgshf@srxbf.com'
+    ,1
+    ,7
+),(
+	'ngf54wt246@nysjm.com'
+    ,1
+    ,8
+),(
+	'f54tbaw4@zhmgdfd.com'
+    ,1
+    ,9
+),(
+	'n5gseg@hnzghea.com'
+    ,0
+    ,10
+)
+;
+
+INSERT INTO tb_product(
+	over_sea_ny
+    ,title
+    ,price
+    ,reg_date
+    ,delivery_fee
+    ,link
+    ,discount
+)
+VALUES(
+	1
+    ,'범블비 변신 무선RC'
+    ,45000
+    ,"2022-01-05"
+    ,5000
+    ,"asdkbfkb/sadfvar/afvcasdc"
+    ,10000
+),(
+	0
+    ,'옵티머스 프라임 변신로봇'
+    ,35000
+    ,"2021-05-30"
+    ,2500
+    ,"sthfkb/srgr/afthred"
+    ,0
+),(
+	1
+    ,'3단 합체 바비인형'
+    ,32000
+    ,"2022-06-18"
+    ,2500
+    ,"a24erffkb/43fewrar/243fdc"
+    ,10000
+),(
+	0
+    ,'유아용 모빌'
+    ,15000
+    ,"2021-05-01"
+    ,0
+    ,"aaegverb/sv4gr/ge5rrgsdc"
+    ,0
+),(
+	0
+    ,'초대형 오리튜브'
+    ,30000
+    ,"2022-06-23"
+    ,0
+    ,"asdkbfkb/sadfvar/afvcasdc"
+    ,2000
+),(
+	1
+    ,'아이언벤 프라모델'
+    ,28000
+    ,"2021-10-01"
+    ,5000
+    ,"atsebfkb/gfdvar/aw654h"
+    ,0
+),(
+	1
+    ,'범블비 변신 무선RC'
+    ,45000
+    ,"2022-01-05"
+    ,5000
+    ,"asdkbfkb/sadfvar/afvcasdc"
+    ,10000
+),(
+	1
+    ,'범블비 변신 무선RC'
+    ,45000
+    ,"2022-01-05"
+    ,5000
+    ,"asdkbfkb/sadfvar/afvcasdc"
+    ,10000
+),(
+	1
+    ,'범블비 변신 무선RC'
+    ,45000
+    ,"2022-01-05"
+    ,5000
+    ,"asdkbfkb/sadfvar/afvcasdc"
+    ,10000
+),(
+	1
+    ,'범블비 변신 무선RC'
+    ,45000
+    ,"2022-01-05"
+    ,5000
+    ,"asdkbfkb/sadfvar/afvcasdc"
+    ,10000
+)
+;
+
+
+INSERT INTO tb_member(
+	id
+    ,pw
+    ,name
+    ,grade
+    ,address
+    ,gender
+    ,dob
+)
+VALUES(
+	'spm528'
+    ,"4dsd64"
+    ,"김태희"
+    ,2
+    ,null
+    ,1
+    ,"2004-05-28"
+)
+;

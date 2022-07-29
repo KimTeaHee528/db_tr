@@ -1,5 +1,20 @@
 use kthdb1;
 
+CREATE TABLE IF NOT EXISTS `kthdb1`.`member2` (
+  `seq` INT NOT NULL AUTO_INCREMENT,
+  `id` VARCHAR(45) NULL,
+  `pw` VARCHAR(45) NULL,
+  `name` VARCHAR(45) NULL,
+  `grade` TINYINT NULL,
+  `address` VARCHAR(45) NULL,
+  `gender` TINYINT NULL,
+  `dob` DATE NULL,
+  PRIMARY KEY (`seq`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci
+;
+
 SELECT
 	seq
 	,id
@@ -9,7 +24,7 @@ SELECT
     ,address
     ,gender
     ,dob
-FROM tb_member
+FROM member2
 -- where 1=1
 -- 	and seq = 5
 -- 	and id = gsdhm528
@@ -20,6 +35,36 @@ FROM tb_member
 -- 	and gender = 2
 -- 	and dob = 1995-05-28
 ;
+
+-- ===================
+-- select 활용
+-- ===============
+select * from tb_member
+where 1=1
+and name like '%태%'
+;
+select * from tb_member
+where 1=1
+and dob between '2000-01-01' and '2010-01-01'
+;
+select * from tb_member
+where 1=1
+and address is null
+;
+select * from tb_member
+where 1=1
+and address is null
+;
+select * from tb_member
+where 1=1
+and address = ''
+;
+
+
 SELECT * from tb_member;
 SELECT * from tb_tell;
-SELECT * from tb_member,tb_tell;
+SELECT * from tb_address;
+SELECT * from tb_product;
+
+SELECT * from member2;
+drop table member2;

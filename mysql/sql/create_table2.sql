@@ -14,6 +14,48 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci
 ;
+CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_member` (
+  `seq` INT NOT NULL AUTO_INCREMENT,
+  `id` VARCHAR(45) NULL,
+  `pw` VARCHAR(45) NULL,
+  `name` VARCHAR(45) NULL,
+  `grade` TINYINT NULL,
+  `address` VARCHAR(45) NULL,
+  `gender` TINYINT NULL,
+  `dob` DATE NULL,
+  PRIMARY KEY (`seq`))
+ENGINE = InnoDB
+;
+CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_brand` (
+  `seq` INT NOT NULL AUTO_INCREMENT,
+  `brand_name` VARCHAR(45) NULL,
+  `logo` VARCHAR(45) NULL,
+  `acount` VARCHAR(45) NULL,
+  `tb_brandcol` VARCHAR(45) NULL,
+  PRIMARY KEY (`seq`))
+ENGINE = InnoDB
+;
+CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_brand_product` (
+  `seq` INT NOT NULL AUTO_INCREMENT,
+  `tb_product_seq` INT NOT NULL,
+  `tb_brand_seq` INT NOT NULL,
+  PRIMARY KEY (`seq`),
+  INDEX `fk_tb_brand_product_tb_product1_idx` (`tb_product_seq` ASC) VISIBLE,
+  INDEX `fk_tb_brand_product_tb_brand1_idx` (`tb_brand_seq` ASC) VISIBLE,
+  CONSTRAINT `fk_tb_brand_product_tb_product1`
+    FOREIGN KEY (`tb_product_seq`)
+    REFERENCES `kthdb1`.`tb_product` (`seq`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tb_brand_product_tb_brand1`
+    FOREIGN KEY (`tb_brand_seq`)
+    REFERENCES `kthdb1`.`tb_brand` (`seq`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci
+;
 CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_tag` (
   `seq` INT NOT NULL AUTO_INCREMENT,
   `tag_name` VARCHAR(45) NULL,
@@ -39,16 +81,48 @@ CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_product_tag` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 ;
-CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_member` (
+CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_email` (
   `seq` INT NOT NULL AUTO_INCREMENT,
-  `id` VARCHAR(45) NULL,
-  `pw` VARCHAR(45) NULL,
-  `name` VARCHAR(45) NULL,
-  `grade` TINYINT NULL,
+  `email` VARCHAR(45) NULL,
+  `advertise_ny` TINYINT NULL,
+  `tb_member_seq` INT NOT NULL,
+  PRIMARY KEY (`seq`),
+  INDEX `fk_tb_email_tb_member1_idx` (`tb_member_seq` ASC) VISIBLE,
+  CONSTRAINT `fk_tb_email_tb_member1`
+    FOREIGN KEY (`tb_member_seq`)
+    REFERENCES `kthdb1`.`tb_member` (`seq`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci
+;
+CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_address` (
+  `seq` INT NOT NULL AUTO_INCREMENT,
   `address` VARCHAR(45) NULL,
-  `gender` TINYINT NULL,
-  `dob` DATE NULL,
-  PRIMARY KEY (`seq`))
+  `address_type` TINYINT NULL,
+  `tb_member_seq` INT NOT NULL,
+  PRIMARY KEY (`seq`),
+  INDEX `fk_tb_addess_tb_member1_idx` (`tb_member_seq` ASC) VISIBLE,
+  CONSTRAINT `fk_tb_addess_tb_member1`
+    FOREIGN KEY (`tb_member_seq`)
+    REFERENCES `kthdb1`.`tb_member` (`seq`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+;
+CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_tell` (
+  `seq` INT NOT NULL AUTO_INCREMENT,
+  `tell_num` VARCHAR(45) NULL,
+  `tell_type` TINYINT NULL COMMENT '대표번호0 / 휴대폰번호1 / 집전화번호2 / 팩스번호3',
+  `tb_member_seq` INT NOT NULL,
+  PRIMARY KEY (`seq`),
+  INDEX `fk_tell_tb_member1_idx` (`tb_member_seq` ASC) VISIBLE,
+  CONSTRAINT `fk_tell_tb_member1`
+    FOREIGN KEY (`tb_member_seq`)
+    REFERENCES `kthdb1`.`tb_member` (`seq`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 ;
 CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_like` (
@@ -79,6 +153,8 @@ CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_cupon` (
   `expiration_period` DATE NULL,
   PRIMARY KEY (`seq`))
 ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci
 ;
 CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_cupon_product` (
   `seq` INT NOT NULL AUTO_INCREMENT,
@@ -98,6 +174,8 @@ CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_cupon_product` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci
 ;
 CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_member_cupon` (
   `seq` INT NOT NULL AUTO_INCREMENT,
@@ -152,8 +230,6 @@ CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_option` (
   `seq` INT NOT NULL AUTO_INCREMENT COMMENT '옵션그룹이랑 바스켓은 장바구니 구현용',
   `tb_product_seq` INT NOT NULL,
   `option_name` VARCHAR(45) NULL COMMENT '옵션에 매겨지는 이름들(색상, 사이즈)',
-  `option_detail` VARCHAR(45) NULL,
-  `price_a` VARCHAR(45) NULL,
   PRIMARY KEY (`seq`),
   INDEX `fk_tb_option_tb_product_idx` (`tb_product_seq` ASC) VISIBLE,
   CONSTRAINT `fk_tb_option_tb_product`
@@ -163,91 +239,38 @@ CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_option` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 ;
-CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_option_sellect` (
-  `seq` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_option_detail` (
+  `seq` INT NOT NULL,
+  `option_detail` VARCHAR(45) NULL,
+  `option_price` INT NULL,
+  `stock` INT NULL,
   `tb_option_seq` INT NOT NULL,
-  `tb_order_seq` INT NOT NULL,
   PRIMARY KEY (`seq`),
-  INDEX `fk_tb_option_sellect_tb_option1_idx` (`tb_option_seq` ASC) VISIBLE,
-  INDEX `fk_tb_option_sellect_order1_idx` (`tb_order_seq` ASC) VISIBLE,
-  CONSTRAINT `fk_tb_option_sellect_tb_option1`
+  INDEX `fk_tb_option_derail_tb_option1_idx` (`tb_option_seq` ASC) VISIBLE,
+  CONSTRAINT `fk_tb_option_derail_tb_option1`
     FOREIGN KEY (`tb_option_seq`)
     REFERENCES `kthdb1`.`tb_option` (`seq`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+;
+CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_option_select` (
+  `seq` INT NOT NULL AUTO_INCREMENT,
+  `tb_order_seq` INT NOT NULL,
+  `tb_option_detail_seq` INT NOT NULL,
+  `quantity` INT NULL,
+  PRIMARY KEY (`seq`),
+  INDEX `fk_tb_option_sellect_order1_idx` (`tb_order_seq` ASC) VISIBLE,
+  INDEX `fk_tb_option_sellect_tb_option_detail1_idx` (`tb_option_detail_seq` ASC) VISIBLE,
   CONSTRAINT `fk_tb_option_sellect_order1`
     FOREIGN KEY (`tb_order_seq`)
     REFERENCES `kthdb1`.`tb_order` (`seq`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-;
-CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_tell` (
-  `seq` INT NOT NULL AUTO_INCREMENT,
-  `tell_num` VARCHAR(45) NULL,
-  `tell_type` TINYINT NULL COMMENT '대표번호0 / 휴대폰번호1 / 집전화번호2 / 팩스번호3',
-  `tb_member_seq` INT NOT NULL,
-  PRIMARY KEY (`seq`),
-  INDEX `fk_tell_tb_member1_idx` (`tb_member_seq` ASC) VISIBLE,
-  CONSTRAINT `fk_tell_tb_member1`
-    FOREIGN KEY (`tb_member_seq`)
-    REFERENCES `kthdb1`.`tb_member` (`seq`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-;
-CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_address` (
-  `seq` INT NOT NULL AUTO_INCREMENT,
-  `address` VARCHAR(45) NULL,
-  `address_type` TINYINT NULL,
-  `tb_member_seq` INT NOT NULL,
-  PRIMARY KEY (`seq`),
-  INDEX `fk_tb_addess_tb_member1_idx` (`tb_member_seq` ASC) VISIBLE,
-  CONSTRAINT `fk_tb_addess_tb_member1`
-    FOREIGN KEY (`tb_member_seq`)
-    REFERENCES `kthdb1`.`tb_member` (`seq`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-;
-CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_email` (
-  `seq` INT NOT NULL AUTO_INCREMENT,
-  `email` VARCHAR(45) NULL,
-  `advertise_ny` TINYINT NULL,
-  `tb_member_seq` INT NOT NULL,
-  PRIMARY KEY (`seq`),
-  INDEX `fk_tb_email_tb_member1_idx` (`tb_member_seq` ASC) VISIBLE,
-  CONSTRAINT `fk_tb_email_tb_member1`
-    FOREIGN KEY (`tb_member_seq`)
-    REFERENCES `kthdb1`.`tb_member` (`seq`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-;
-CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_brand` (
-  `seq` INT NOT NULL AUTO_INCREMENT,
-  `brand_name` VARCHAR(45) NULL,
-  `logo` VARCHAR(45) NULL,
-  `acount` VARCHAR(45) NULL,
-  `tb_brandcol` VARCHAR(45) NULL,
-  PRIMARY KEY (`seq`))
-ENGINE = InnoDB
-;
-CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_brand_product` (
-  `seq` INT NOT NULL AUTO_INCREMENT,
-  `tb_product_seq` INT NOT NULL,
-  `tb_brand_seq` INT NOT NULL,
-  PRIMARY KEY (`seq`),
-  INDEX `fk_tb_brand_product_tb_product1_idx` (`tb_product_seq` ASC) VISIBLE,
-  INDEX `fk_tb_brand_product_tb_brand1_idx` (`tb_brand_seq` ASC) VISIBLE,
-  CONSTRAINT `fk_tb_brand_product_tb_product1`
-    FOREIGN KEY (`tb_product_seq`)
-    REFERENCES `kthdb1`.`tb_product` (`seq`)
-    ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_tb_brand_product_tb_brand1`
-    FOREIGN KEY (`tb_brand_seq`)
-    REFERENCES `kthdb1`.`tb_brand` (`seq`)
+  CONSTRAINT `fk_tb_option_sellect_tb_option_detail1`
+    FOREIGN KEY (`tb_option_detail_seq`)
+    REFERENCES `kthdb1`.`tb_option_detail` (`seq`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
+;
