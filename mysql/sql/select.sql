@@ -64,7 +64,10 @@ and address = ''
 SELECT * from tb_member;
 SELECT * from tb_tell;
 SELECT * from tb_address;
+SELECT * from tb_email;
 SELECT * from tb_product;
-
-SELECT * from member2;
-drop table member2;
+SELECT * from tb_tag;
+SELECT * from tb_product_tag;
+SELECT * from tb_brand;
+SELECT * from tb_brand_product;
+SELECT * from tb_like;

@@ -57,8 +57,7 @@ ALTER TABLE tb_product DROP COLUMN stock;
 DELETE FROM member2 WHERE SEQ > 0;
 
 -- 시퀀스 시작순서
--- ALTER TABLE tb_member AUTO_INCREMENT = 1;
--- ALTER TABLE tb_tell AUTO_INCREMENT = 1;
+ALTER TABLE tb_option_name AUTO_INCREMENT = 1;
 
 select * From member2;
 

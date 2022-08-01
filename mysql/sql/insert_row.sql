@@ -136,98 +136,6 @@ VALUES(
 )
 ;
 
-INSERT INTO member2(
-	id
-    ,pw
-    ,name
-    ,grade
-    ,address
-    ,gender
-    ,dob
-)
-VALUES(
-	'spm528'
-    ,"4dsd64"
-    ,"김태희"
-    ,2
-    ,"안산"
-    ,1
-    ,"2004-05-28"
-),(
-	'hntsbo8'
-    ,"t9ldagsd"
-    ,"김바보"
-    ,4
-    ,"안산"
-    ,1
-    ,"1985-05-28"
-),(
-	'hnhe8'
-    ,"564agsd"
-    ,"김천재"
-    ,2
-    ,"일산"
-    ,3
-    ,"1989-05-28"
-),(
-	'iksbo8'
-    ,"75ieagsd"
-    ,"김평범"
-    ,2
-    ,"제주"
-    ,2
-    ,"1991-05-28"
-),(
-	'rxgmd42'
-    ,"t4bh6agsd"
-    ,"김비범"
-    ,1
-    ,"제주"
-    ,2
-    ,"2000-05-28"
-),(
-	'rqa58'
-    ,"nt4badagsd"
-    ,"김태이"
-    ,1
-    ,"광주"
-    ,4
-    ,"2002-05-28"
-),(
-	'jnryd5bo8'
-    ,"n5yedagsd"
-    ,"이태희"
-    ,1
-    ,"김해"
-    ,2
-    ,"2000-05-28"
-),(
-	'bsfsbo8'
-    ,"wt3abgsd"
-    ,"이제주"
-    ,1
-    ,"제주"
-    ,1
-    ,"1991-05-28"
-),(
-	'gbve6564'
-    ,"eah43sd"
-    ,"박태희"
-    ,1
-    ,"광주"
-    ,1
-    ,"1994-05-28"
-),(
-	'wrg1ab698'
-    ,"thfdagsd"
-    ,"최태희"
-    ,3
-    ,"강남"
-    ,2
-    ,"2014-05-28"
-)
-;
-
 INSERT INTO tb_address(
 	address
     ,address_type
@@ -276,9 +184,58 @@ VALUES(
 )
 ;
 
+INSERT INTO tb_email(
+	email
+    ,advertise_ny
+    ,tb_member_seq
+)
+VALUES(
+	"spm528@gmail.com"
+    ,1
+    ,1
+),(
+	"86fyo63@naver.com"
+    ,1
+    ,2
+),(
+	"5jgvh43@hanmail.com"
+    ,0
+    ,3
+),(
+	"jgvk863@ngfrbveda.com"
+    ,0
+    ,4
+),(
+	"smda9203@ngd.com"
+    ,1
+    ,5
+),(
+	"52gdf43@tbsnzg.com"
+    ,1
+    ,6
+),(
+	"52gdf43@ngfz.com"
+    ,0
+    ,7
+),(
+	"52gdf43@nzrgsea.com"
+    ,0
+    ,8
+),(
+	"gstgb34@ngfgbd.com"
+    ,1
+    ,9
+),(
+	"56ghm1@nghfnbsd.com"
+    ,0
+    ,10
+)
+;
+
 INSERT INTO tb_product(
 	over_sea_ny
     ,title
+    ,sales_rate
     ,price
     ,reg_date
     ,delivery_fee
@@ -288,6 +245,7 @@ INSERT INTO tb_product(
 VALUES(
 	1
     ,'범블비 변신 무선RC'
+    ,760
     ,45000
     ,"2022-01-05"
     ,5000
@@ -296,6 +254,7 @@ VALUES(
 ),(
 	0
     ,'옵티머스 프라임 변신로봇'
+    ,25
     ,35000
     ,"2021-05-30"
     ,2500
@@ -304,6 +263,7 @@ VALUES(
 ),(
 	1
     ,'3단 합체 바비인형'
+    ,450
     ,32000
     ,"2022-06-18"
     ,2500
@@ -312,6 +272,7 @@ VALUES(
 ),(
 	0
     ,'유아용 모빌'
+    ,30
     ,15000
     ,"2021-05-01"
     ,0
@@ -320,6 +281,7 @@ VALUES(
 ),(
 	0
     ,'초대형 오리튜브'
+    ,120
     ,30000
     ,"2022-06-23"
     ,0
@@ -328,6 +290,7 @@ VALUES(
 ),(
 	1
     ,'아이언벤 프라모델'
+    ,50
     ,28000
     ,"2021-10-01"
     ,5000
@@ -336,6 +299,7 @@ VALUES(
 ),(
 	1
     ,'범블비 변신 무선RC'
+    ,1500
     ,45000
     ,"2022-01-05"
     ,5000
@@ -344,6 +308,7 @@ VALUES(
 ),(
 	1
     ,'범블비 변신 무선RC'
+    ,2300
     ,45000
     ,"2022-01-05"
     ,5000
@@ -352,6 +317,7 @@ VALUES(
 ),(
 	1
     ,'범블비 변신 무선RC'
+    ,350
     ,45000
     ,"2022-01-05"
     ,5000
@@ -360,6 +326,7 @@ VALUES(
 ),(
 	1
     ,'범블비 변신 무선RC'
+    ,150
     ,45000
     ,"2022-01-05"
     ,5000
@@ -368,23 +335,203 @@ VALUES(
 )
 ;
 
-
-INSERT INTO tb_member(
-	id
-    ,pw
-    ,name
-    ,grade
-    ,address
-    ,gender
-    ,dob
+INSERT INTO tb_tag(
+	tag_name
 )
 VALUES(
-	'spm528'
-    ,"4dsd64"
-    ,"김태희"
-    ,2
-    ,null
-    ,1
-    ,"2004-05-28"
+	"로봇"
+),(
+	"인형"
+),(
+	"퍼즐"
+),(
+	"인기"
+),(
+	"가족"
+),(
+	"여행"
+),(
+	"물놀이"
+),(
+	"게임"
+),(
+	"만화"
+),(
+	"교육"
+),(
+	"유아"
+),(
+	"어른"
+),(
+	"반려동물"
 )
 ;
+
+INSERT INTO tb_product_tag(
+	tb_product_seq
+    ,tb_tag_seq
+)
+VALUES(
+	1
+    ,1
+),(
+	1
+    ,2
+),(
+	1
+    ,3
+),(
+	2
+    ,5
+),(
+	2
+    ,6
+),(
+	2
+    ,8
+),(
+	3
+    ,1
+),(
+	3
+    ,6
+),(
+	3
+    ,7
+),(
+	4
+    ,3
+),(
+	1
+    ,4
+),(
+	1
+    ,9
+)
+;
+
+INSERT INTO tb_brand(
+	brand_name
+    ,logo
+    ,acount
+    ,address
+)
+VALUES(
+	"Lego"
+    ,"redahgdv/bedabda/bfbf"
+    ,"01-1561-46-1561"
+    ,"서울 어디 한국지부"
+),(
+	"손오공"
+    ,"gdrrga/thd53/tbshfd"
+    ,"01-5411-26-5641"
+    ,"경기도 안산 반월공단"
+),(
+	"영실업"
+    ,"gdrrga/thea/jtra"
+    ,"35-1781-10-8491"
+    ,"전라도 김해 땅끝마을"
+),(
+	"반다이"
+    ,"jtrsh/ghk/hfd"
+    ,"24-781-56-6414"
+    ,"일본 어디 어디어디"
+)
+;
+
+INSERT INTO tb_brand_product(
+	tb_product_seq
+    ,tb_brand_seq
+)
+VALUES(
+	1
+    ,1
+),(
+	2
+    ,1
+),(
+	3
+    ,1
+),(
+	4
+    ,2
+),(
+	5
+    ,2
+),(
+	6
+    ,2
+),(
+	7
+    ,2
+),(
+	8
+    ,2
+),(
+	9
+    ,3
+),(
+	10
+    ,3
+)
+;
+
+INSERT INTO tb_like(
+	tb_member_seq
+    ,tb_product_seq
+)
+VALUES(
+	1
+    ,1
+),(
+	1
+    ,2
+),(
+	1
+    ,3
+),(
+	2
+    ,2
+),(
+	2
+    ,3
+),(
+	2
+    ,4
+),(
+	2
+    ,7
+),(
+	6
+    ,2
+),(
+	8
+    ,3
+),(
+	8
+    ,5
+)
+;
+
+INSERT INTO tb_cupon(
+	discount
+    ,cupon_name
+    ,discount_type
+    ,overlap_ny
+    ,expiration_period
+)
+VALUES(
+	12
+    ,"신규회원 환영 쿠폰"
+    ,1
+    ,0
+    ,"0000-02-00"
+),(
+	20
+    ,"어린이날 할인 쿠폰"
+    ,1
+    ,0
+    ,"0000-00-15"
+)
+;
+
