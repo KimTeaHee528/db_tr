@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_member` (
   `pw` VARCHAR(45) NULL,
   `name` VARCHAR(45) NULL,
   `grade` TINYINT NULL,
-  `address` VARCHAR(45) NULL,
+  `point` INT NULL,
   `gender` TINYINT NULL,
   `dob` DATE NULL,
   PRIMARY KEY (`seq`))
@@ -219,25 +219,27 @@ CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_order` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 ;
-CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_order_product` (
-  `seq` INT NOT NULL AUTO_INCREMENT,
-  `tb_order_seq` INT NOT NULL,
-  `tb_product_seq` INT NOT NULL,
-  INDEX `fk_tb_order_has_tb_product_tb_product1_idx` (`tb_product_seq` ASC) VISIBLE,
-  INDEX `fk_tb_order_has_tb_product_tb_order1_idx` (`tb_order_seq` ASC) VISIBLE,
-  PRIMARY KEY (`seq`),
-  CONSTRAINT `fk_tb_order_has_tb_product_tb_order1`
-    FOREIGN KEY (`tb_order_seq`)
-    REFERENCES `kthdb1`.`tb_order` (`seq`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_tb_order_has_tb_product_tb_product1`
-    FOREIGN KEY (`tb_product_seq`)
-    REFERENCES `kthdb1`.`tb_product` (`seq`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-;
+
+-- CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_order_product` (
+--   `seq` INT NOT NULL AUTO_INCREMENT,
+--   `tb_order_seq` INT NOT NULL,
+--   `tb_product_seq` INT NOT NULL,
+--   INDEX `fk_tb_order_has_tb_product_tb_product1_idx` (`tb_product_seq` ASC) VISIBLE,
+--   INDEX `fk_tb_order_has_tb_product_tb_order1_idx` (`tb_order_seq` ASC) VISIBLE,
+--   PRIMARY KEY (`seq`),
+--   CONSTRAINT `fk_tb_order_has_tb_product_tb_order1`
+--     FOREIGN KEY (`tb_order_seq`)
+--     REFERENCES `kthdb1`.`tb_order` (`seq`)
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION,
+--   CONSTRAINT `fk_tb_order_has_tb_product_tb_product1`
+--     FOREIGN KEY (`tb_product_seq`)
+--     REFERENCES `kthdb1`.`tb_product` (`seq`)
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION)
+-- ENGINE = InnoDB
+-- ;
+
 CREATE TABLE IF NOT EXISTS `kthdb1`.`tb_option_name` (
   `seq` INT NOT NULL AUTO_INCREMENT COMMENT '옵션그룹이랑 바스켓은 장바구니 구현용',
   `tb_product_seq` INT NOT NULL,

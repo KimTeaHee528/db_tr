@@ -13,7 +13,7 @@ COLLATE = utf8mb4_0900_ai_ci
 
 -- 컬럼추가
 alter table member2 add column nickname varchar(45);
-alter table member2 add column name_eng varchar(45) after nickname;
+alter table tb_member add column point int after grade;
 alter table member2 add column name_jp varchar(45) after nickname;
 alter table member2 add column name_ch varchar(45) after nickname;
 

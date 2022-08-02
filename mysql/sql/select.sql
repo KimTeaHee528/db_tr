@@ -71,3 +71,8 @@ SELECT * from tb_product_tag;
 SELECT * from tb_brand;
 SELECT * from tb_brand_product;
 SELECT * from tb_like;
+SELECT * from tb_cupon;
+SELECT * from tb_cupon_product;
+SELECT * from tb_member_cupon;
+
+
