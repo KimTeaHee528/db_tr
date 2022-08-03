@@ -57,7 +57,7 @@ ALTER TABLE tb_product DROP COLUMN stock;
 DELETE FROM member2 WHERE SEQ > 0;
 
 -- 시퀀스 시작순서
-ALTER TABLE tb_cupon AUTO_INCREMENT = 6;
+ALTER TABLE ccg AUTO_INCREMENT = 6;
 
 select * From member2;
 
