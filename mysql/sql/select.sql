@@ -74,5 +74,6 @@ SELECT * from tb_like;
 SELECT * from tb_cupon;
 SELECT * from tb_cupon_product;
 SELECT * from tb_member_cupon;
+SELECT * from tb_image;
 
 

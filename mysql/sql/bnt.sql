@@ -5,14 +5,34 @@ use kthdb1;
 select * From tb_member a where 1=1 and id="spm528" and pw = "4dsd64"
 ;
 
--- 상품 목록
+-- 상품기준 상품 목록 (로봇채크)
 select
-a.seq
-,a.title
-,a.price
-,b.image_url
-from tb_product a
-inner join tb_image b on b.product_seq = a.seq
+p.seq
+,p.title
+,p.price
+,i.image_url
+,t.tag_name
+from tb_product p
+inner join tb_image i on i.tb_product_seq = p.seq
+inner join tb_product_tag pt on pt.tb_product_seq = p.seq
+inner join tb_tag t on t.seq = pt.seq
+where 1=1
+and i.image_type = 1
+and t.tag_name = "로봇"
+;
+
+-- 태그기준 상품 목록
+select
+p.seq
+,p.title
+,p.price
+,i.image_url
+,t.tag_name
+,pt.*
+from tb_tag t
+inner join tb_product_tag pt on i.tb_product_seq = p.seq
+inner join tb_product_tag pt on pt.tb_product_seq = p.seq
+inner join tb_tag t on t.seq = pt.seq
 ;
 
 
