@@ -8,3 +8,10 @@ WHERE 1=1
     and seq < 5
 -- and name like '%천%'
 ;
+
+UPDATE tb_tell SET 
+	tell_type = null
+WHERE 1=1
+	and seq = 7
+-- and name like '%천%'
+;
