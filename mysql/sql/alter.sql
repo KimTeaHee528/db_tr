@@ -12,7 +12,7 @@ COLLATE = utf8mb4_0900_ai_ci
 
 
 -- 컬럼추가
-alter table member2 add column nickname varchar(45);
+alter table tb_point_member add column weight DOUBLE after acquisition_date;
 alter table tb_address add column address_dtail int after address_dtail;
 alter table member2 add column name_jp varchar(45) after nickname;
 alter table member2 add column name_ch varchar(45) after nickname;
@@ -36,16 +36,16 @@ alter table member2 add column name_ch varchar(45) after nickname;
 
 
 -- 컬럼삭제
-ALTER TABLE member2 DROP name_eng;
+ALTER TABLE tb_point_member DROP weight;
 ALTER TABLE member2 DROP name_ch;
 ALTER TABLE member2 DROP name_jp;
 ALTER TABLE member2 DROP name_ko;
 
 -- 컬럼변경 (데이터 타입)
-alter table tb_address modify column address_detail varchar(45);
+alter table tb_point modify column point Double;
 
 -- 컬럼 이름 변경
-ALTER TABLE tb_address CHANGE COLUMN address_dtail address_detail varchar(45);
+ALTER TABLE tb_point_member CHANGE COLUMN point_seq tb_point_seq int;
 
 -- 테이블 이름 변경
 RENAME TABLE tb_option_sellect TO tb_option_select;

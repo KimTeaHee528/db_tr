@@ -30,9 +30,9 @@ DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci
 ;
 
-CREATE TABLE IF NOT EXISTS `bnt`.`point` (
-  `seq` INT NOT NULL,
-  `point` INT NULL,
+CREATE TABLE IF NOT EXISTS `bnt`.`tb_point` (
+  `seq` INT NOT NULL AUTO_INCREMENT,
+  `point` DOUBLE NULL,
   `reason` INT NULL,
   `due_date` DATETIME NULL,
   PRIMARY KEY (`seq`))
@@ -42,16 +42,17 @@ COLLATE = utf8mb4_unicode_ci
 ;
 
 CREATE TABLE IF NOT EXISTS `bnt`.`tb_point_member` (
-  `seq` INT NOT NULL,
+  `seq` INT NOT NULL AUTO_INCREMENT,
   `acquisition_date` DATETIME NULL,
-  `point_seq` INT NOT NULL,
+  `weight` DOUBLE NULL,
+  `tb_point_seq` INT NOT NULL,
   `tb_member_seq` INT NOT NULL,
   PRIMARY KEY (`seq`),
-  INDEX `fk_tb_point_member_point1_idx` (`point_seq` ASC) VISIBLE,
+  INDEX `fk_tb_point_member_point1_idx` (`tb_point_seq` ASC) VISIBLE,
   INDEX `fk_tb_point_member_tb_member1_idx` (`tb_member_seq` ASC) VISIBLE,
   CONSTRAINT `fk_tb_point_member_point1`
-    FOREIGN KEY (`point_seq`)
-    REFERENCES `bnt`.`point` (`seq`)
+    FOREIGN KEY (`tb_point_seq`)
+    REFERENCES `bnt`.`tb_point` (`seq`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_tb_point_member_tb_member1`
@@ -67,12 +68,13 @@ COLLATE = utf8mb4_unicode_ci
 CREATE TABLE IF NOT EXISTS `bnt`.`tb_email` (
   `seq` INT NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(45) NULL,
+  `email_code` INT NULL,
   `advertise_ny` INT NULL,
-  `email_code` INT NOT NULL,
+  `tb_member_seq` INT NOT NULL,
   PRIMARY KEY (`seq`),
-  INDEX `fk_tb_email_tb_member1_idx` (`email_code` ASC) VISIBLE,
+  INDEX `fk_tb_email_tb_member1_idx` (`tb_member_seq` ASC) VISIBLE,
   CONSTRAINT `fk_tb_email_tb_member1`
-    FOREIGN KEY (`email_code`)
+    FOREIGN KEY (`tb_member_seq`)
     REFERENCES `bnt`.`tb_member` (`seq`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
