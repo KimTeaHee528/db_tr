@@ -12,7 +12,7 @@ COLLATE = utf8mb4_0900_ai_ci
 
 
 -- 컬럼추가
-alter table tb_point_member add column weight DOUBLE after acquisition_date;
+alter table tb_point add column reason varchar(45) after type;
 alter table tb_address add column address_dtail int after address_dtail;
 alter table member2 add column name_jp varchar(45) after nickname;
 alter table member2 add column name_ch varchar(45) after nickname;
@@ -45,7 +45,7 @@ ALTER TABLE member2 DROP name_ko;
 alter table tb_point modify column point Double;
 
 -- 컬럼 이름 변경
-ALTER TABLE tb_point_member CHANGE COLUMN point_seq tb_point_seq int;
+ALTER TABLE tb_point CHANGE COLUMN reason type int;
 
 -- 테이블 이름 변경
 RENAME TABLE tb_option_sellect TO tb_option_select;
@@ -57,7 +57,7 @@ ALTER TABLE tb_product DROP COLUMN stock;
 DELETE FROM member2 WHERE SEQ > 0;
 
 -- 시퀀스 시작순서
-ALTER TABLE tb_member AUTO_INCREMENT = 1;
+ALTER TABLE tb_member AUTO_INCREMENT = 7;
 
 select * From member2;
 

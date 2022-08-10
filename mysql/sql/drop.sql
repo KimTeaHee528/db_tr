@@ -1,3 +1,3 @@
 use kthdb1;
 
-drop table tb_option_select;
+drop table tb_point;

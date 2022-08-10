@@ -1,5 +1,47 @@
 use bnt;
 
+insert into ccg(
+cod_group_name
+,use_ny
+)
+value(
+"성별"
+,1
+),(
+"등급"
+,1
+),(
+"이메일"
+,1
+),(
+"통신사"
+,1
+),(
+"zip_code"
+,1
+),(
+"광고수신"
+,1
+),(
+"주문상태"
+,1
+)
+;
+
+insert into cc(
+code_name
+,use_ny
+,ccg_seq
+)
+value(
+"남자"
+,1
+,1
+)
+;
+
+
+
 insert into tb_member(
 id
 ,pw
@@ -188,63 +230,6 @@ value(
 ,2500
 ,"ntead/naer/bear"
 ,6000
-)
-;
-
-insert into tb_point(
-point
-,reason
-,due_date
-)
-value(
-0.1
-,1
-,'0000-06-00'
-),(
-0.15
-,2
-,'0000-06-00'
-),(
-300
-,3
-,'0000-06-00'
-),(
-500
-,4
-,'0000-12-00'
-),(
-1000
-,5
-,'0000-12-15'
-)
-;
-
-insert into tb_point_member(
-acquisition_date
-,weight
-,tb_point_seq
-,tb_member_seq
-)
-value(
-'2022-03-21 00:00:00'
-,15000
-,1
-,1
-),(
-'2022-04-05 00:00:00'
-,45000
-,2
-,1
-),(
-'2022-05-01 00:00:00'
-,null
-,4
-,1
-),(
-'2021-04-28 00:00:00'
-,null
-,5
-,2
 )
 ;
 

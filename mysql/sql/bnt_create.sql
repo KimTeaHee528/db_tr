@@ -30,41 +30,6 @@ DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci
 ;
 
-CREATE TABLE IF NOT EXISTS `bnt`.`tb_point` (
-  `seq` INT NOT NULL AUTO_INCREMENT,
-  `point` DOUBLE NULL,
-  `reason` INT NULL,
-  `due_date` DATETIME NULL,
-  PRIMARY KEY (`seq`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_unicode_ci
-;
-
-CREATE TABLE IF NOT EXISTS `bnt`.`tb_point_member` (
-  `seq` INT NOT NULL AUTO_INCREMENT,
-  `acquisition_date` DATETIME NULL,
-  `weight` DOUBLE NULL,
-  `tb_point_seq` INT NOT NULL,
-  `tb_member_seq` INT NOT NULL,
-  PRIMARY KEY (`seq`),
-  INDEX `fk_tb_point_member_point1_idx` (`tb_point_seq` ASC) VISIBLE,
-  INDEX `fk_tb_point_member_tb_member1_idx` (`tb_member_seq` ASC) VISIBLE,
-  CONSTRAINT `fk_tb_point_member_point1`
-    FOREIGN KEY (`tb_point_seq`)
-    REFERENCES `bnt`.`tb_point` (`seq`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_tb_point_member_tb_member1`
-    FOREIGN KEY (`tb_member_seq`)
-    REFERENCES `bnt`.`tb_member` (`seq`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_unicode_ci
-;
-
 CREATE TABLE IF NOT EXISTS `bnt`.`tb_email` (
   `seq` INT NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(45) NULL,
