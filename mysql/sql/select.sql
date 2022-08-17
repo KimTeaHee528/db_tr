@@ -60,6 +60,38 @@ from tb_product p
 	order by p.seq asc
 ;
 
+select
+	b.seq
+    ,b.email
+    ,b.email_div
+    ,b.advertise_ny
+    ,"" as tellnum
+    ,"" as carrier
+    ,"" as tell_type
+from tb_email b
+where 1=1
+union
+select
+	a.seq
+	,"" as email
+    ,"" as email_div
+    ,"" as advertise_ny
+    ,a.tellnum
+    ,a.carrier
+    ,a.tell_type
+From tb_tell a
+where 1=1
+;
+
+
+
+
+
+
+
+
+
+
 
 
 
