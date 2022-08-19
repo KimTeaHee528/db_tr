@@ -83,7 +83,7 @@ From tb_tell a
 where 1=1
 ;
 
-
+select * from ccg;
 
 
 
