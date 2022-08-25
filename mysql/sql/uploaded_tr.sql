@@ -93,7 +93,6 @@ value(
 )
 ;
 
+select * from product_uploaded_tr;
 
 delete from product_uploaded_tr where seq>0;
-
-select * from product_uploaded_tr;

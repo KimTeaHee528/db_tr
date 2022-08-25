@@ -84,6 +84,8 @@ where 1=1
 ;
 
 select * from ccg;
+select * from cc;
+
 
 
 
