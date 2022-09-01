@@ -42,7 +42,7 @@ ALTER TABLE member2 DROP name_jp;
 ALTER TABLE member2 DROP name_ko;
 
 -- 컬럼변경 (데이터 타입)
-alter table tb_point modify column point Double;
+alter table tb_ccg modify column code_en_name varchar(45);
 
 -- 컬럼 이름 변경
 ALTER TABLE tb_point CHANGE COLUMN reason type int;
