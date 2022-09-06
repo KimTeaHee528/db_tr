@@ -1,4 +1,5 @@
 use kthdb1;
+use bnt;
 
 -- 공통코드
 select
