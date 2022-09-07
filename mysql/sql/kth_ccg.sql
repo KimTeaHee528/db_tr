@@ -1,5 +1,5 @@
 use kthdb1;
-SELECT * FROM kthdb1.tb_ccg;
+SELECT * FROM kthdb1.tb_cc;
 
 
 
@@ -72,9 +72,8 @@ values(
 )
 ;
 
+delete from tb_cc where seq > 15;
+ALTER TABLE tb_cc AUTO_INCREMENT = 16;
+
 delete from tb_ccg where seq > 5;
-
-
-
-
-
+ALTER TABLE tb_ccg AUTO_INCREMENT = 6;
