@@ -19,6 +19,10 @@ CREATE TABLE IF NOT EXISTS `toyshop`.`cc` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 ;
+
+
+
+
 CREATE TABLE IF NOT EXISTS `toyshop`.`tb_member` (
   `seq` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
