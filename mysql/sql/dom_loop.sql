@@ -1,6 +1,8 @@
 use toyshop;
 
-CREATE TABLE IF NOT EXISTS `toyshop`.`coupang.PRODUCT` (
+SELECT * FROM toyshop.`PRODUCT`;
+
+CREATE TABLE IF NOT EXISTS `toyshop`.`PRODUCT` (
   `category_id` INT NOT NULL,
   `name` VARCHAR(45) NULL,
   `price` INT NULL,
@@ -9,5 +11,4 @@ CREATE TABLE IF NOT EXISTS `toyshop`.`coupang.PRODUCT` (
   PRIMARY KEY (`category_id`))
 ENGINE = InnoDB
 ;
-
 
