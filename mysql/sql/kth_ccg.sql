@@ -77,3 +77,13 @@ ALTER TABLE tb_cc AUTO_INCREMENT = 16;
 
 delete from tb_ccg where seq > 5;
 ALTER TABLE tb_ccg AUTO_INCREMENT = 6;
+
+
+
+
+
+
+
+
+
+

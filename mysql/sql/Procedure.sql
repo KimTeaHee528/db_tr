@@ -1,5 +1,6 @@
 use toyshop;
 
+drop table toyshop.`PRODUCT`;
 SELECT * FROM toyshop.`PRODUCT`;
 
 CREATE TABLE IF NOT EXISTS `toyshop`.`PRODUCT` (
@@ -31,9 +32,20 @@ BEGIN
 		VALUES (
 			i
 			, concat(CONCAT
-				   (CHAR(RAND() * 24 + 97), CHAR(RAND() * 24 + 97), CHAR(RAND() * 24 + 97),
-				   CHAR(RAND() * 24 + 97), CHAR(RAND() * 24 + 97), CHAR(RAND() * 24 + 97),
-				   CHAR(RAND() * 24 + 97), CHAR(RAND() * 24 + 97), CHAR(RAND() * 24 + 97), CHAR(RAND() * 24 + 97))
+					   (
+                       
+					   CHAR(RAND() * 24 + 97)
+					   , CHAR(RAND() * 24 + 97)
+					   , CHAR(RAND() * 24 + 97)
+					   , CHAR(RAND() * 24 + 97)
+					   , CHAR(RAND() * 24 + 97)
+					   , CHAR(RAND() * 24 + 97)
+					   , CHAR(RAND() * 24 + 97)
+					   , CHAR(RAND() * 24 + 97)
+					   , CHAR(RAND() * 24 + 97)
+					   , CHAR(RAND() * 24 + 97)
+                       
+					   )
 				   )
 			, FLOOR(RAND() * 100)*5000
 			, concat(CONCAT
@@ -93,6 +105,7 @@ BEGIN
                            , CHAR(RAND() * 24 + 97)
 							)
 					)
+                    
 			, FLOOR(RAND() * 100)*FLOOR(RAND() * 100)*10
 			);
         SET i = i + 1;
@@ -102,7 +115,21 @@ DELIMITER $$
 CALL insertLoop;
 $$
 
-
-
-
 CALL insertLoop();
+
+
+
+UPDATE tb_ccg SET 
+	code_group_name =
+    ,code_en_name =
+    ,use_ny =
+    ,reg_date =
+    ,mod_date =
+    value 
+WHERE 1=1
+	and seq = 3
+;
+
+
+
+
